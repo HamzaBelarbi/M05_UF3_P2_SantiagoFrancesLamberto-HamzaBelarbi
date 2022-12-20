@@ -1,0 +1,22 @@
+﻿@page
+@model M05_UF3_P2_Template.Pages.Products.ProductModel
+@{
+
+}
+
+<form method="post">
+    <button type="submit">Save</button>
+
+    <input type="text" asp-for="product.Summary">
+    <input type="text" asp-for="product.Icon">
+    <input type="text" asp-for="product.Banner">
+    <input type="text" asp-for="product.Trailer">
+    <input type="number" asp-for="product.Price">
+    <input type="date" asp-for="product.Publishing">
+    <input type="number" asp-for="product.Size">
+    <input type="number" min="0" step="1" asp-for="product.Developer_id">
+    <input type="number" min="0" step="1" asp-for="product.Editor_id">
+</form>
+<a class="btn btn-primary float-right" asp-page="/Products/Game" asp-route-id="@Model.helper_id" title="View Game">
+    <span class="material-icons text-white">add</span>
+</a>

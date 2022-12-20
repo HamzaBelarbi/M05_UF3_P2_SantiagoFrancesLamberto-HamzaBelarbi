@@ -1,0 +1,72 @@
+﻿@page
+@model M05_UF3_P2_Template.Pages.Products.SearcherModel
+@using M05_UF3_P2_Template.App_Code.Model
+@{
+}
+
+<a class="btn btn-primary float-right" asp-page="/Products/Product" title="Add product">
+    <span class="material-icons text-white">add</span>
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Publishing</th>
+            <th>Size</th>
+            <th>Developer</th>
+            <th>Editor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Product item in Model.products)
+        {
+            <tr>
+                <td>
+                    @if (item.Type == Product.TYPE.Game)
+                    {
+                        <span class="material-icons">sports_esports</span>
+                    }
+                    else if (item.Type == Product.TYPE.Video)
+                    {
+                        <span class="material-icons">videocam</span>
+                    }
+                    else
+                    {
+                        <span class="material-icons">question_mark</span>
+                    }
+                </td>
+                <td>@item.Summary</td>
+                <td>@item.Price</td>
+                <td>@item.Publishing</td>
+                <td>@item.Size</td>
+                @if (item.Developer == null)
+                {
+                    <td>-</td>
+                }
+                else
+                {
+                    <td>@item.Developer.Name</td>
+                }
+                @if (item.Editor == null)
+                {
+                    <td>-</td>
+                }
+                else
+                {
+                    <td>@item.Editor.Name</td>
+                }
+                <td>
+                    <form asp-page-handler="delete" asp-route-id="@item.Id" method="post">
+                        <a class="btn btn-primary" asp-page="/Products/Product" asp-route-id="@item.Id" title="View product">
+                            <span class="material-icons text-white">visibility</span>
+                        </a>
+                        <button class="btn btn-danger"><span class="material-icons text-white">delete</span></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
