@@ -1,4 +1,33 @@
 ﻿@page
 @model M05_UF3_P2_Template.Pages.Products.VideoModel
+
 @{
+    if (Model.Id > 0)
+    {
+        ViewData["Title"] = "Video - " + Model.video.Product_Id;
+    }
+    else
+    {
+        ViewData["Title"] = "Video - Create";
+    }
 }
+
+<form method="post">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">
+                @if (Model.Id > 0)
+                {
+    <img class="img img-thumbnail img-fluid" src="@Model.video.Product_Id" style="width: 200px; height: 100px; object-fit: scale-down;" />
+                    <span>@Model.video.Duration - <small>Edit Duration</small></span> }
+                                else
+                                {
+                    <span>Create video</span>}
+                <button type="submit" class="btn btn-primary float-right"><span class="material-icons">save</span></button>
+            </h1>
+        </div>
+
+
+        
+    </div>
+</form>

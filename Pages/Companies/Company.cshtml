@@ -18,13 +18,11 @@
             <h1 class="card-title">
                 @if (Model.Id > 0)
                 {
-                    <img class="img img-thumbnail img-fluid" src="@Model.company.Icon" style="width: 200px; height: 100px; object-fit: scale-down; background-color:@Model.company.IconBackground;" />
-                    <span>@Model.company.Name - <small>Edit Company</small></span>
-                }
-                else
-                {
-                    <span>Create company</span>
-                }
+        <img class="img img-thumbnail img-fluid" src="@Model.company.Icon" style="width: 200px; height: 100px; object-fit: scale-down; background-color:@Model.company.IconBackground;" />
+                        <span>@Model.company.Name - <small>Edit Company</small></span> }
+                    else
+                    {
+        <span>Create company</span>}
                 <button type="submit" class="btn btn-primary float-right"><span class="material-icons">save</span></button>
             </h1>
         </div>
@@ -32,9 +30,7 @@
             <div class="form-row">
                 <div class="form-group col-md-2">
                     <label for="Company_Id_Input col-sm-2 col-form-label"><span class="material-icons mx-1" style="font-size: 1rem;">tag</span>Id</label>
-                    @{
-                        string CustomId = Model.Id > 0 ? Model.Id.ToString() : null;
-                    }
+                    @{ string CustomId = Model.Id > 0 ? Model.Id.ToString() : null; }
                     <input type="text" asp-for="company.Id" value="@CustomId" readonly class="form-control" id="Company_Id_Input" placeholder="-">
                 </div>
                 <div class="form-group col-md-5">
